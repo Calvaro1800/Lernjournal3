@@ -2,69 +2,131 @@
 
 ## Übersicht
 
-|                           | Link/Info                                                  |
-|---------------------------|------------------------------------------------------------|
-| **ONNX Modell (Netron)**  | https://netron.app                                          |
-| **Gewähltes Modell**      | SqueezeNet 1.0                                              |
-| **GitHub Fork (Repo)**    | https://github.com/Calvaro1800/Lernjournal3                |
+|                               | Link/Info                                                  |
+|-------------------------------|------------------------------------------------------------|
+| **ONNX Modell (Netron)**      | https://netron.app                                         |
+| **Verwendetes Modell**        | SqueezeNet 1.0 (Version 12)                                |
+| **GitHub Repository (Fork)**  | https://github.com/Calvaro1800/Lernjournal3               |
 
 ---
 
 ## Dokumentation – ONNX Analyse
 
-Für das Lernjournal wurde das vortrainierte ONNX-Modell **SqueezeNet v1.0** aus dem offiziellen [ONNX Model Zoo](https://github.com/onnx/models) ausgewählt. Dieses Modell wurde ursprünglich für die Bildklassifikation auf dem ImageNet-Datensatz entwickelt und zeichnet sich durch seine kompakte Größe und Geschwindigkeit aus. Die Architektur eignet sich daher besonders gut für Web-Demos und mobile Anwendungen.
+Für dieses Lernjournal wurde das Modell **SqueezeNet v1.0** gewählt. Es gehört zu den leichtgewichtigsten CNN-Architekturen und eignet sich daher besonders für Edge- und Webanwendungen. Es besteht aus sogenannten Fire-Modulen, die eine `squeeze`- (1x1-Convolution) und eine `expand`-Schicht (1x1 und 3x3-Convolutions) kombinieren. Diese Architektur reduziert die Anzahl an Parametern deutlich.
 
-Zur Analyse wurde das Tool **Netron** verwendet, mit dem die interne Struktur des ONNX-Modells grafisch dargestellt werden kann. Dabei zeigte sich, dass SqueezeNet aus sogenannten "fire modules" besteht, die durch eine Kombination aus `squeeze`- und `expand`-Layern die Anzahl der Parameter minimieren.
+Zur Analyse der Modellstruktur wurde **Netron** verwendet. Dabei konnte das Modell visuell untersucht werden. Wichtig war zu erkennen, wie der Datenfluss aufgebaut ist, wie die Layer benannt sind und welche Formate die Inputs und Outputs haben.
 
-📷 **Screenshot Netron Analyse:**
-> *(Hier Screenshot von Netron einfügen z. B. `screenshots/netron-squeezenet.png`)*
+📷 *[Screenshot Netron mit geöffnetem SqueezeNet-Modell hier einfügen]*
 
 ---
 
 ## Dokumentation – onnx-image-classification Anwendung
 
-### 1. Setup und Vorbereitung
+### 1. Projektinitialisierung
 
-Zunächst wurde das bestehende Repository [`onnx-image-classification`](https://github.com/microsoft/onnx-image-classification) geforkt und lokal geklont. Anschließend wurde das ursprüngliche Modell durch **SqueezeNet 1.0** ersetzt. Die Modell-Datei `squeezenet1.0-12.onnx` wurde aus dem ONNX Model Zoo heruntergeladen und im Projektordner abgelegt. Zusätzlich wurde die Label-Datei `labels_map.txt` hinzugefügt, um die Ausgabe der Klassennamen zu ermöglichen.
+Das offizielle Repository `onnx-image-classification` wurde geforkt und lokal auf dem Rechner geklont:
 
-📷 **Screenshot Projektstruktur:**
-> *(Hier Screenshot der Projektdateien im Dateibrowser einfügen z. B. `screenshots/structure.png`)*
+```bash
+git clone https://github.com/Calvaro1800/Lernjournal3.git
+cd Lernjournal3
+Anschließend wurde das ursprüngliche Modell entfernt und durch squeezenet1.0-12.onnx ersetzt. Die Datei wurde aus dem ONNX Model Zoo heruntergeladen:
 
-### 2. Anpassung des Codes (`app.py`)
+bash
+Copy
+Edit
+curl -L -o squeezenet1.0-12.onnx https://github.com/onnx/models/raw/main/vision/classification/squeezenet/model/squeezenet1.0-12.onnx
+Auch die Label-Datei labels_map.txt wurde aus einer öffentlichen Quelle ergänzt:
 
-Im Python-Backend wurde die Logik für die Bildvorverarbeitung auf das Eingabeformat von SqueezeNet abgestimmt. Dies bedeutet insbesondere eine RGB-Konvertierung, Größenanpassung auf 224x224 Pixel und Subtraktion der ImageNet-Mittelwerte.
+bash
+Copy
+Edit
+curl -o labels_map.txt https://raw.githubusercontent.com/anishathalye/imagenet-simple-labels/master/imagenet-simple-labels.json
+📷 [Screenshot Verzeichnisstruktur mit .onnx-File und labels_map.txt einfügen]
 
-Die ONNX-Laufzeitumgebung wurde mit `onnxruntime.InferenceSession` geladen. Die Ein- und Ausgaben wurden dynamisch mit `get_inputs()[0].name` und `get_outputs()[0].name` bestimmt, um Kompatibilität zu gewährleisten.
+2. Modellintegration im Backend (app.py)
+Der Python-Server basiert auf Flask und wurde so angepasst, dass das neue Modell verwendet werden kann. Der Modellname in der InferenceSession() wurde auf SqueezeNet gesetzt. Außerdem wurde die Bildvorverarbeitung angepasst:
 
-📷 **Screenshot Code-Ausschnitt `app.py`:**
-> *(Hier Screenshot vom Code in VSCode oder PyCharm einfügen)*
+Resize auf 224x224
 
-### 3. Frontend mit HTML & JavaScript
+RGB-Konvertierung
 
-Das Projekt verwendet ein einfaches HTML-Formular zur Bildauswahl und JavaScript (`script.js`) für den Upload und die Anzeige der Ergebnisse. Nach dem Upload wird das Bild angezeigt und die Top-5 Klassifikationsergebnisse als HTML-Tabelle dargestellt.
+ImageNet-Normalisierung (Mittelwerte je Kanal)
 
-📷 **Screenshot Frontend in Browser:**
-> *(Hier Screenshot von Web-Oberfläche mit Ergebnisanzeige einfügen z. B. `screenshots/frontend-result.png`)*
+Numpy-Array → Tensor → Batch
 
-### 4. Test mit verschiedenen Bildern
+Hier ist ein Ausschnitt des Codes zur Vorverarbeitung:
 
-Zum Test wurden unterschiedliche Bilddateien verwendet (z. B. Tiere, Objekte, Architektur). Die Klassifikation funktionierte zuverlässig für einfache Bilder. Die Genauigkeit hängt jedoch stark von der Bildqualität und dem gewählten Modell ab.
+python
+Copy
+Edit
+def preprocess_image(img):
+    img = cv2.resize(img, (224, 224))
+    img = img.astype(np.float32)
+    img -= np.array([123.68, 116.779, 103.939], dtype=np.float32)
+    img = np.transpose(img, (2, 0, 1))  # HWC -> CHW
+    img = np.expand_dims(img, axis=0)
+    return img
+📷 [Screenshot vom Codeabschnitt app.py in VSCode einfügen]
 
-📷 **Screenshot Beispiel-Ergebnis (Papagei):**
-> *(Hier Screenshot vom Ergebnis-JSON oder der Tabelle mit Prediction einfügen)*
+Fehler wie z. B. „Expected tensor(float), got tensor(double)” wurden durch korrektes astype(np.float32) behoben.
 
----
+3. Upload-Logik und Ergebnisanzeige (JavaScript)
+Die Frontend-Logik wurde mit dem bestehenden script.js beibehalten. Es wird geprüft, ob genau eine Bilddatei hochgeladen wurde. Dann wird das Bild via fetch an /analyze gesendet und die JSON-Antwort in eine Tabelle mit Top-5-Ergebnissen umgewandelt.
 
-## Fazit
+Die wichtigsten Stellen:
 
-Die Arbeit mit ONNX-Modellen in einer Webanwendung war spannend und lehrreich. Durch die Integration von SqueezeNet konnte ein schlankes, aber leistungsstarkes Klassifikationsmodell getestet werden. Besonders hilfreich war die grafische Modell-Analyse mit Netron, die ein gutes Verständnis der Architektur vermittelte. Auch das Troubleshooting mit `onnxruntime` und die richtige Bildvorverarbeitung war zentral für erfolgreiche Inferenz.
+javascript
+Copy
+Edit
+fetch('/analyze', {
+    method: 'POST',
+    body: formData
+}).then(response => response.json())
+  .then(data => {
+    // Daten in HTML-Tabelle darstellen
+  });
+📷 [Screenshot der Weboberfläche mit eingefügtem Bild und Ergebnistabelle einfügen]
 
-Insgesamt wurde ein funktionierender Bildklassifikator im Webbrowser umgesetzt, der vollständig mit ONNX läuft und auf einem eigenen GitHub-Repository dokumentiert ist.
+4. Tests mit realen Bildern
+Zur Verifikation wurde das System mit mehreren Testbildern geprüft (Papagei, Kirche, etc.). Je nach Qualität und Ausschnitt war das Ergebnis plausibel. Das Modell ist besonders sensitiv auf helle Farben, klare Kontraste und typisches ImageNet-Material.
 
-📷 **Abschlussscreenshot funktionsfähige App:**
-> *(Hier finalen Screenshot der laufenden App mit Bild + Top-5 Ergebnissen einfügen)*
+📷 [Screenshots von verschiedenen Klassifikationsergebnissen einfügen – z. B. prediction auf Papagei]
 
----
+5. Lessons Learned
+Das Projekt ermöglichte einen praxisnahen Einblick in die ONNX-Inferenz im Webkontext. Wichtige Erkenntnisse:
 
-**Link zum Repository:**  
+Die Bildvorverarbeitung muss exakt zur Trainingskonfiguration des Modells passen
+
+Die Inputnamen (input_name = ort_session.get_inputs()[0].name) variieren je nach Modell
+
+Die Modellstruktur kann mit Netron einfach analysiert und verstanden werden
+
+Fehler wie falsche Dtype oder Shape führen zu klaren ONNXRuntime-Exceptions – hilfreich für Debugging
+
+Fazit
+Mit SqueezeNet wurde erfolgreich ein leichtgewichtiges ONNX-Modell in eine Flask-basierte Webanwendung integriert. Die Ausgabe funktionierte im Frontend zuverlässig, die Klassifikationsergebnisse wurden verständlich dargestellt. Die Kombination aus Modellanalyse (Netron), Modelldownload, Python-Inferenz und Webintegration war didaktisch sinnvoll und hat mein Verständnis für Modellbereitstellung und -nutzung deutlich vertieft.
+
+📷 [Finaler Screenshot der funktionierenden App mit Vorhersage und Bild einfügen]
+
+Repository
 👉 https://github.com/Calvaro1800/Lernjournal3
+
+yaml
+Copy
+Edit
+
+---
+
+### 📸 Screenshot-Tipps:
+
+Du kannst Screenshots in einem Ordner `screenshots/` ablegen und im README z. B. so referenzieren:
+
+```markdown
+![Netron Ansicht](screenshots/netron-squeezenet.png)
+✅ Terminal-Kommandos zum Push
+bash
+Copy
+Edit
+git add .
+git commit -m "README und Screenshots ergänzt"
+git push
