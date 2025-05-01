@@ -28,7 +28,8 @@ Die Komplexität ist durch viele **Bottleneck-Blöcke** gekennzeichnet, die Dept
 
 📸 Beispielbild (Netron Ansicht):
 ```markdown
-![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/58edb9ce-8e2b-4a7c-b3ef-344ef3650316)
+
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/6a65037d-66ea-444b-89d4-1aa144c91807)
 
 ```
 
@@ -50,6 +51,7 @@ Netron zeigt für jedes Modul:
 
 📸 Visualisierung (siehe `screenshots/`):
 ```markdown
+
 ![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/22b3b066-605d-4ee7-9dd2-632268bcd46d)
 
 ```
