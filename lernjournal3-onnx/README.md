@@ -19,7 +19,8 @@ Analyse mit Netron:
 ```bash
 netron efficientnet-lite4-11.onnx
 ```
-![Netron EfficientNet](screenshots/netron-efficientnet-lite4.png)
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/d4d0dbfa-1b6d-40a4-952e-317fa8af5335)
+
 
 Beobachtungen:
 - Input-Name: `images:0`
@@ -110,16 +111,18 @@ Ergebnisse werden als HTML-Tabelle dargestellt.
 **Screenshots:**
 
 ### Kirche
-![EFNet](screenshots/prediction-kirche-efnet.png)
-![SqueezeNet](screenshots/prediction-kirche-squeezenet.png)
+<img width="815" alt="Screenshot 2025-04-30 at 23 16 14" src="https://github.com/user-attachments/assets/ce0bf7ee-a362-40ce-8126-fb4e61949937" />
+<img width="1081" alt="Screenshot 2025-04-30 at 23 42 56" src="https://github.com/user-attachments/assets/56395650-aa83-43b1-bb61-b426bcf9d04d" />
 
 ### Flugzeug
-![EFNet](screenshots/prediction-plane-efnet.png)
-![SqueezeNet](screenshots/prediction-plane-squeezenet.png)
+<img width="1022" alt="Screenshot 2025-04-30 at 23 15 56" src="https://github.com/user-attachments/assets/ae658102-b10d-455b-9d6e-2563079b2392" />
+<img width="1183" alt="Screenshot 2025-04-30 at 23 43 05" src="https://github.com/user-attachments/assets/27618cbb-0d73-48f2-adcc-ec3d59eaf882" />
+
 
 ### Papagei
-![EFNet](screenshots/prediction-parrot-efnet.png)
-![SqueezeNet](screenshots/prediction-parrot-squeezenet.png)
+<img width="1063" alt="Screenshot 2025-04-30 at 23 11 41" src="https://github.com/user-attachments/assets/9b77caf3-ec6e-4ecf-84c7-9d8f2676ab54" />
+<img width="1174" alt="Screenshot 2025-04-30 at 23 43 14" src="https://github.com/user-attachments/assets/8d1c5ba8-9293-4fe4-944a-a6cac4190dc7" />
+
 
 ---
 
