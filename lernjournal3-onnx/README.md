@@ -28,8 +28,8 @@ Die Komplexität ist durch viele **Bottleneck-Blöcke** gekennzeichnet, die Dept
 
 📸 Beispielbild (Netron Ansicht):
 ```markdown
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/9cb7f7a6-9cfc-4d1d-a2d8-5b78e44bfc19)
 
-![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/6a65037d-66ea-444b-89d4-1aa144c91807)
 
 ```
 
@@ -179,11 +179,7 @@ Ergebnisse werden als HTML-Tabelle dargestellt.
 
 ## 7. Fazit
 
-Dieses Lernjournal ermöglichte eine komplette Pipeline:
-1. Auswahl und Analyse eines ONNX-Modells
-2. Fehleranalyse mit Netron und ONNX Runtime
-3. Integration in Flask + Frontend
-4. Vergleich zweier Modelle
+Durch dieses Lernjournal konnte ich ein umfassendes Verständnis für die Struktur und Funktionsweise von ONNX-Modellen entwickeln. Besonders wertvoll war der direkte Vergleich zwischen EfficientNet-Lite4 und SqueezeNet – zwei Modellen mit unterschiedlicher Komplexität und Größe. Die Analyse mit Netron hat mir geholfen, den Datenfluss im Modell zu verstehen und die erforderlichen Preprocessing-Schritte im Backend korrekt umzusetzen. Zudem zeigte sich, wie entscheidend die richtige Wahl der Normalisierung, das Input-Format und der Input-Name für eine erfolgreiche Inferenz sind. Die ONNX Runtime erwies sich als robust und verständlich in ihrer Fehlerkommunikation. Insgesamt hat mir dieses Projekt praxisnah gezeigt, wie Modelle in Webanwendungen integriert und evaluiert werden können. Besonders der Wechsel zu einem kleineren Modell wie SqueezeNet hat deutlich gemacht, wie Modellwahl und Performance im Deployment-Kontext zusammenspielen. Dieses Wissen wird mir bei zukünftigen ML-Projekten, insbesondere im Bereich Modellbereitstellung, sehr nützlich sein.
 
 Die App funktioniert stabil lokal und kann erweitert oder online deployed werden.
 
