@@ -1,38 +1,78 @@
-# Lernjournal 3 – ONNX
+## Lernjournal 3 – ONNX
 
-## Übersicht
-
+### Übersicht
 | Kategorie | Link/Info |
 |----------|-----------|
 | ONNX Modell für Analyse (Netron) | https://netron.app |
-| Fork der App (EfficientNet-Lite) | https://github.com/Calvaro1800/Lernjournal3 |
+| onnx-image-classification Fork (EfficientNet-Lite) | https://github.com/Calvaro1800/Lernjournal3 |
 
 ---
 
-## 1. ONNX Analyse
+### Dokumentation ONNX Analyse
 
-### Modell: EfficientNet-Lite4 (ursprünglich)
-- **Top-1 Accuracy:** 80.4 %
-- **Größe:** ca. 49 MB
+Für dieses Lernjournal habe ich zunächst das Modell **EfficientNet-Lite4** aus dem ONNX Model Zoo verwendet. Dieses Modell ist bekannt für seine hohe Genauigkeit (ca. 80% Top-1 Accuracy) bei gleichzeitig moderatem Speicherbedarf (ca. 49 MB). Es eignet sich gut als Referenz für leistungsfähige Inferenzmodelle in produktiven Umgebungen, beispielsweise für Cloud- oder Edge-Einsatz.
 
-Analyse mit Netron:
+#### Analyse mit Netron: EfficientNet-Lite4
+Netron ist ein browserbasiertes Tool zur Analyse von ONNX-Modellen. Es zeigt die komplette Modellstruktur mit Layernamen, Shapes, Dtypes und Datenfluss.
+
 ```bash
 netron efficientnet-lite4-11.onnx
 ```
-![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/80ae75b8-cb50-40a7-a41e-5acc605c91ae)![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/a8dab939-10a2-4188-ad07-1e65bdb4b77f)
 
+**Beobachtungen:**
+- Input: `images:0`, Shape `[1,3,224,224]`, Dtype `float32`
+- Typische Layer: Conv2D, BatchNorm, Relu/Swish, Bottlenecks
+- Output: Softmax-Schicht mit 1000 Klassen
 
-Beobachtungen:
-- Input-Name: `images:0`
-- Shape: `[1, 3, 224, 224]`
-- Dtype: `float32`
-- Output: Softmax Layer
+Die Komplexität ist durch viele **Bottleneck-Blöcke** gekennzeichnet, die Depthwise Convolutions und Residualverbindungen kombinieren. Die finale Schicht ist ein FC-Layer nach GlobalAveragePooling.
 
-Probleme bei Inferenz:
-- falscher Dtype (`double` statt `float`)
-- unerwartete Inputnamen
+📸 Beispielbild (Netron Ansicht):
+```markdown
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/58edb9ce-8e2b-4a7c-b3ef-344ef3650316)
 
-Entscheidung: Wechsel auf SqueezeNet zur Vereinfachung.
+```
+
+#### Analyse mit Netron: SqueezeNet 1.0
+Später wurde **SqueezeNet** als kompakteres Modell gewählt (ca. 4.8 MB). Auch dieses Modell wurde mit Netron analysiert:
+```bash
+netron onnx-image-classification/squeezenet1.0-12.onnx
+```
+
+SqueezeNet nutzt sogenannte **Fire-Module** als Kernelement der Architektur:
+- Jedes Fire-Modul besteht aus einem **Squeeze-Layer** (1x1 Convolution), gefolgt von zwei parallelen **Expand-Layern** (1x1 und 3x3 Convolutions).
+- Diese Ergebnisse werden konkateniert und an die nächste Stufe weitergegeben.
+
+Netron zeigt für jedes Modul:
+- Die **konkret verwendeten Kernelgrößen**
+- Shapes der Ein- und Ausgaben
+- Relu-Aktivierungen zwischen den Blöcken
+- Optional: MaxPool zwischen den Gruppen zur Reduktion der räumlichen Dimension
+
+📸 Visualisierung (siehe `screenshots/`):
+```markdown
+![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/22b3b066-605d-4ee7-9dd2-632268bcd46d)
+
+```
+
+**Layer-Struktur im Überblick:**
+1. Conv + Relu + MaxPool
+2. Fire1 – Fire8 (bestehend aus Squeeze/Expand/Concat)
+3. Dropout
+4. Finaler Conv (1000 Klassen)
+5. Global Average Pooling
+6. Softmax
+
+Die Vorteile der Netron-Analyse:
+- Einfache visuelle Überprüfung der Architektur
+- Exakte Kenntnis über Input-Namen und -Formate
+- Hilfreich für das Debugging (z. B. bei falschen Inputtypen oder fehlenden Tensornamen)
+
+Durch diese visuelle und strukturelle Analyse konnte ich die Inferenz-Pipeline gezielt anpassen – z. B. durch Korrektur der Preprocessing-Schritte oder Ermittlung des exakten Input-Namens mit:
+```python
+input_name = ort_session.get_inputs()[0].name
+```
+
+Diese Erkenntnisse waren essenziell, um sowohl EfficientNet als auch SqueezeNet erfolgreich lokal mit ONNX Runtime in Flask einzubinden.
 
 ---
 
