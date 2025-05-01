@@ -40,15 +40,16 @@ Hier kommt dein verbessertes, maximal detailliertes README:
   ```
 <img width="1201" alt="27" src="https://github.com/user-attachments/assets/da67a69a-c599-4106-a786-814090423c0c" />
 
+![28](https://github.com/user-attachments/assets/39fda441-8dad-45fa-a130-1321c8747d72)
 
 - **Lokales Testing:**
   ```bash
   docker run -p 80:80 calvaro/car-color-classifier:latest
   ```
-  *(Screenshot: `printscreens/4.png`)*
 
 - Zugriff auf Weboberfläche via `http://localhost`  
-  *(Screenshot der lokal laufenden App: `printscreens/5.png`)*
+![38](https://github.com/user-attachments/assets/b95be281-3c39-4337-ade4-33f252097daf)
+<img width="1017" alt="Screenshot 2025-05-01 at 18 24 36" src="https://github.com/user-attachments/assets/cdae98cc-5d6c-443f-881d-607b35774676" />
 
 ---
 
