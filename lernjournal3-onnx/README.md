@@ -19,7 +19,8 @@ Analyse mit Netron:
 ```bash
 netron efficientnet-lite4-11.onnx
 ```
-![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/80ae75b8-cb50-40a7-a41e-5acc605c91ae)
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/80ae75b8-cb50-40a7-a41e-5acc605c91ae)![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/a8dab939-10a2-4188-ad07-1e65bdb4b77f)
+
 
 Beobachtungen:
 - Input-Name: `images:0`
