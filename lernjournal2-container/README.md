@@ -1,4 +1,4 @@
-Perfekt, ich verstehe:  
+<img width="1381" alt="1" src="https://github.com/user-attachments/assets/5552fe03-a20c-4014-8363-e1e45f32559f" />Perfekt, ich verstehe:  
 👉 Du möchtest eine **noch vollständigere** Version – inklusive **Hinweise, wo Screenshots eingebaut werden sollen** (mit Screenshot-Dateinamen aus deinem Projekt `printscreens/`).
 
 Hier kommt dein verbessertes, maximal detailliertes README:  
@@ -32,13 +32,14 @@ Hier kommt dein verbessertes, maximal detailliertes README:
   ```bash
   docker build -t calvaro/car-color-classifier:latest .
   ```
-  *(Screenshot: `printscreens/1.png`)*
+<img width="970" alt="4" src="https://github.com/user-attachments/assets/0154c669-1ea1-46d4-aa70-fe63d6ad45fc" />
 
 - **Manuelles Pushen auf DockerHub:**
   ```bash
   docker push calvaro/car-color-classifier:latest
   ```
-  *(Screenshot: `printscreens/2.png` + `printscreens/3.png`)*
+<img width="1201" alt="27" src="https://github.com/user-attachments/assets/da67a69a-c599-4106-a786-814090423c0c" />
+
 
 - **Lokales Testing:**
   ```bash
