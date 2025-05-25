@@ -82,6 +82,7 @@ End Version:
 - Ich habe mit **Colima** gearbeitet, um mein Projekt trotzdem containerisieren zu können
 - Ich konnte mein Image lokal bauen & ausführen (`port 5151`)
 - Das **Azure Deployment** war leider am Tag des Screencasts noch nicht abgeschlossen
+![Screenshot 2025-05-25 at 23 29 09](https://github.com/user-attachments/assets/2e3a7fe7-ef62-4a0e-887f-ed99f64f18c8)
 
 ---
 
