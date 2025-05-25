@@ -142,6 +142,7 @@ FROM eclipse-temurin:21-jdk
 COPY target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
+![Screenshot 2025-05-25 at 23 49 34](https://github.com/user-attachments/assets/a7370e2c-a91f-43bd-b576-766baf0b2037)
 
 ```bash
 docker build -t reptile-classifier .
@@ -160,7 +161,9 @@ az webapp up --name reptile-classifier-app \
   --resource-group reptile-rg \
   --sku F1 --location westeurope
 ```
+![Screenshot 2025-05-25 at 23 51 31](https://github.com/user-attachments/assets/16a25a0d-fe4f-4f18-99fb-4fe61aa54ed1)
 
 ✅ Die App läuft live unter:
 🔗 [https://reptile-classifier-app.azurewebsites.net/](https://reptile-classifier-app.azurewebsites.net/)
 
+![Screenshot 2025-05-25 at 23 39 18](https://github.com/user-attachments/assets/23396c9d-b5e3-4688-8e78-7a6cad425494)
