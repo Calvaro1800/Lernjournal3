@@ -19,32 +19,32 @@ Klar! Hier ist dein vollständiger und sauber strukturierter README.md-Text als 
 
 ## App, Funktionalität
 
-* [✅] Die App verwendet **Flask**, um eine einfache Webseite bereitzustellen.
-* [✅] Auf der Startseite kann der Nutzer seinen Namen eingeben.
-* [✅] Nach dem Absenden wird zufällig eine **motivierende Nachricht** ausgewählt und personalisiert angezeigt.
-* [✅] Die HTML-Oberfläche ist mit einem Template (`index.html`) gestaltet.
-* [✅] Das Verhalten bei POST/GET wird im `app.py` korrekt gesteuert.
+*  Die App verwendet **Flask**, um eine einfache Webseite bereitzustellen.
+*  Auf der Startseite kann der Nutzer seinen Namen eingeben.
+*  Nach dem Absenden wird zufällig eine **motivierende Nachricht** ausgewählt und personalisiert angezeigt.
+*  Die HTML-Oberfläche ist mit einem Template (`index.html`) gestaltet.
+*  Das Verhalten bei POST/GET wird im `app.py` korrekt gesteuert.
 
 <img width="942" alt="Screenshot 2025-04-22 at 13 40 37" src="https://github.com/user-attachments/assets/555ab5fe-630d-4226-bae6-0e81956a3392" />
 
 Dependency Management
-	•	[✅] Die Datei requirements.txt enthält alle benötigten Abhängigkeiten:
+	•	 Die Datei requirements.txt enthält alle benötigten Abhängigkeiten:
 	•	Flask
 	•	gunicorn
-	•	[✅] Die Installation erfolgt über:
+	•	 Die Installation erfolgt über:
 
 pip install -r requirements.txt
 
 
-	•	[✅] Die Anwendung kann lokal mit folgendem Befehl gestartet werden:
+	•	 Die Anwendung kann lokal mit folgendem Befehl gestartet werden:
 
 flask --app app run
 
 <img width="1068" alt="Screenshot 2025-04-22 at 13 42 14" src="https://github.com/user-attachments/assets/cd88bd5e-adb4-4e4a-8c20-afb738880182" />
 
 Deployment
-	•	[✅] Die App wurde erfolgreich auf Azure App Service deployed.
-	•	[✅] Deployment-Schritte:
+	•	Die App wurde erfolgreich auf Azure App Service deployed.
+	•	 Deployment-Schritte:
 	1.	Login via az login
 	2.	Ressourcengruppe:
 
@@ -77,9 +77,9 @@ az webapp config set --resource-group mdm-gruppe --name MotivationGenerator --st
 
 
 	•	[✅] Live-Link zur App:
-👉 http://motivationgenerator.azurewebsites.net
+ http://motivationgenerator.azurewebsites.net
 
-📸 Beispiel-Screenshot der Azure-CLI Deployment-Ausgabe:
+Beispiel-Screenshot der Azure-CLI Deployment-Ausgabe:
 
 ![Azure Deployment Output](images/screenshot-deployment.png)
 
@@ -89,5 +89,3 @@ az webapp config set --resource-group mdm-gruppe --name MotivationGenerator --st
 	•	Die Verwendung von gunicorn ist notwendig für Azure App Service (nicht flask run)
 
 ---
-
-Wenn du möchtest, kann ich dir im Anschluss auch gleich das **Lernjournal** nach Bewertungsraster aufbereiten. Sag einfach Bescheid ✅
