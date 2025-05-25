@@ -26,9 +26,10 @@ netron efficientnet-lite4-11.onnx
 
 Die Komplexität ist durch viele **Bottleneck-Blöcke** gekennzeichnet, die Depthwise Convolutions und Residualverbindungen kombinieren. Die finale Schicht ist ein FC-Layer nach GlobalAveragePooling.
 
-📸 Beispielbild (Netron Ansicht):
+Beispielbild (Netron Ansicht):
 ```markdown
-![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/9cb7f7a6-9cfc-4d1d-a2d8-5b78e44bfc19)
+
+![efficientnet-lite4-11 onnx](https://github.com/user-attachments/assets/06067348-a200-48ca-a0ba-0dc00c59fc82)
 
 
 ```
@@ -36,7 +37,9 @@ Die Komplexität ist durch viele **Bottleneck-Blöcke** gekennzeichnet, die Dept
 #### Analyse mit Netron: SqueezeNet 1.0
 Später wurde **SqueezeNet** als kompakteres Modell gewählt (ca. 4.8 MB). Auch dieses Modell wurde mit Netron analysiert:
 ```bash
-netron onnx-image-classification/squeezenet1.0-12.onnx
+
+![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/f34e27ca-f50e-48c5-8b00-a92110a10fba)
+
 ```
 
 SqueezeNet nutzt sogenannte **Fire-Module** als Kernelement der Architektur:
