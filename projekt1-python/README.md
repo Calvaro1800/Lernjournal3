@@ -166,4 +166,4 @@ Merci fürs Lesen – und danke an alle, die mich unterstützt haben.
 Falls du dein Portfolio optimieren willst… frag einfach mein Modell 😄
 
 ## Persönliche Reflexion
-Ich habe bei der Erstellung meines ersten Projekts den Fehler gemacht, dass ich nie die Schritte des Einsatzes meines Projekts und die Ausgaben meines Templates in VSC für das Docking, den Einsatz usw. fotografiert habe. Dies war eine Strafe für mein Lernjournal. 
+Ich habe bei der Erstellung meines Projekts den Fehler gemacht, dass ich nie die Schritte des Einsatzes meines Projekts und die Ausgaben meines Templates in VSC für das Docking, den Einsatz usw. fotografiert habe. Dies war eine Strafe für mein Lernjournal. 
