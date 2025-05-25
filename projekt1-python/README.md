@@ -50,6 +50,7 @@ Deshalb war dieses Projekt für mich eine doppelte Herausforderung.
 ### 🔹 MongoDB
 - IP-Ranges, DNS-Probleme, SSL Errors, `tlsAllowInvalidCertificates` – es war ein harter Einstieg
 - Aber am Ende konnte ich über Compass, `pymongo` und `.env` alles stabil verbinden
+<img width="946" alt="Screenshot 2025-05-25 at 23 15 22" src="https://github.com/user-attachments/assets/b3b6738c-ea70-49e7-9889-eb5450f1dfdb" />
 
 ### 🔹 Scraping
 - Playwright hat anfangs nicht funktioniert → ich bin auf `requests + BeautifulSoup` umgestiegen
@@ -66,9 +67,15 @@ Deshalb war dieses Projekt für mich eine doppelte Herausforderung.
 - Trotzdem habe ich eine App mit **Charts, Pie Diagrammen, Autocomplete und Forms** gebaut
 - Ich habe Bootstrap, Chart.js und JS-Funktionen kombiniert – es war intensiv
 
+Prototype:
+  <img width="327" alt="Screenshot 2025-05-25 at 23 15 01" src="https://github.com/user-attachments/assets/2af5edb3-d786-46f1-9a58-b572df0d2f47" />
+End Version:
+<img width="769" alt="Screenshot 2025-05-25 at 23 21 07" src="https://github.com/user-attachments/assets/61e03d58-6d96-4d27-a178-d49f1fc68aa5" />
+
 ### 🔹 GitHub Actions
 - Ich habe YAML-Dateien selbst geschrieben für automatisches Scraping, Build & Test
 - Debugging war schwer, vor allem mit Secrets (Mongo URI, HF Token)
+<img width="725" alt="Screenshot 2025-05-25 at 23 23 17" src="https://github.com/user-attachments/assets/f45ff99e-a12c-4344-8685-5a2e853201bc" />
 
 ### 🔹 Docker & macOS Probleme
 - Nach einem **macOS Sequoia Update** konnte ich Docker Desktop **nicht mehr öffnen**
