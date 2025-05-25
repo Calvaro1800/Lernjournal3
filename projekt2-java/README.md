@@ -167,3 +167,7 @@ az webapp up --name reptile-classifier-app \
 🔗 [https://reptile-classifier-app.azurewebsites.net/](https://reptile-classifier-app.azurewebsites.net/)
 
 ![Screenshot 2025-05-25 at 23 39 18](https://github.com/user-attachments/assets/23396c9d-b5e3-4688-8e78-7a6cad425494)
+
+
+## Persönliche Reflexion
+Ich habe bei der Erstellung meines ersten Projekts den Fehler gemacht, dass ich nie die Schritte des Einsatzes meines Projekts und die Ausgaben meines Templates in VSC für das Docking, den Einsatz usw. fotografiert habe. Dies war eine Strafe für mein Lernjournal. 
