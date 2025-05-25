@@ -1,4 +1,4 @@
-﻿# MDM-Lernjournal <Alvarchr>
+﻿# MDM-Lernjournal Alvarchr
 
 ## Inhalt
 
