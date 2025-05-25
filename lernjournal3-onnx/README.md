@@ -38,11 +38,6 @@ Beispielbild (Netron Ansicht):
 #### Analyse mit Netron: SqueezeNet 1.0
 Später wurde **SqueezeNet** als kompakteres Modell gewählt (ca. 4.8 MB). Auch dieses Modell wurde mit Netron analysiert:
 
-
-![onnx-image-classification_squeezenet1 0-12 onnx](https://github.com/user-attachments/assets/f34e27ca-f50e-48c5-8b00-a92110a10fba)
-
-
-
 SqueezeNet nutzt sogenannte **Fire-Module** als Kernelement der Architektur:
 - Jedes Fire-Modul besteht aus einem **Squeeze-Layer** (1x1 Convolution), gefolgt von zwei parallelen **Expand-Layern** (1x1 und 3x3 Convolutions).
 - Diese Ergebnisse werden konkateniert und an die nächste Stufe weitergegeben.
