@@ -170,4 +170,4 @@ az webapp up --name reptile-classifier-app \
 
 
 ## Persönliche Reflexion
-Ich habe bei der Erstellung meines ersten Projekts den Fehler gemacht, dass ich nie die Schritte des Einsatzes meines Projekts und die Ausgaben meines Templates in VSC für das Docking, den Einsatz usw. fotografiert habe. Dies war eine Strafe für mein Lernjournal. 
+Ich habe bei der Erstellung meines ersten Projekts den Fehler gemacht, dass ich nie die Schritte  meines Projekts und die Ausgaben meines Templates in VSC für das Docking, den Einsatz usw. fotografiert habe. Dies war eine Strafe für mein Lernjournal. 
